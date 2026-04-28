@@ -1,0 +1,896 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Person
+{
+private:
+    int id;
+    string name;
+    int age;
+    string gender;
+    string phone;
+
+public:
+    Person()
+    {
+        id = 0;
+        name = "";
+        age = 0;
+        gender = "";
+        phone = "";
+    }
+
+    Person(int i, string n, int a, string g, string p)
+    {
+        id = i;
+        name = n;
+        age = a;
+        gender = g;
+        phone = p;
+    }
+
+    void setId(int i)
+    {
+        id = i;
+    }
+
+    int getId()
+    {
+        return id;
+    }
+
+    void setName(string n)
+    {
+        name = n;
+    }
+
+    string getName()
+    {
+        return name;
+    }
+
+    void setAge(int a)
+    {
+        age = a;
+    }
+
+    int getAge()
+    {
+        return age;
+    }
+
+    void setGender(string g)
+    {
+        gender = g;
+    }
+
+    string getGender()
+    {
+        return gender;
+    }
+
+    void setPhone(string p)
+    {
+        phone = p;
+    }
+
+    string getPhone()
+    {
+        return phone;
+    }
+
+    void displayPerson()
+    {
+        cout << "ID : " << id << endl;
+        cout << "Name : " << name << endl;
+        cout << "Age : " << age << endl;
+        cout << "Gender : " << gender << endl;
+        cout << "Phone : " << phone << endl;
+    }
+};
+
+class Patient : public Person
+{
+private:
+    string disease;
+    int assignedDoctorId;
+
+public:
+    Patient() : Person()
+    {
+        disease = "";
+        assignedDoctorId = 0;
+    }
+
+    Patient(int i, string n, int a, string g, string p, string d, int aDI)
+        : Person(i, n, a, g, p)
+    {
+        disease = d;
+        assignedDoctorId = aDI;
+    }
+
+    void setDisease(string d)
+    {
+        disease = d;
+    }
+
+    string getDisease()
+    {
+        return disease;
+    }
+
+    void setAssignedDoctorId(int aDI)
+    {
+        assignedDoctorId = aDI;
+    }
+
+    int getAssignedDoctorId()
+    {
+        return assignedDoctorId;
+    }
+
+    void displayPatient()
+    {
+        displayPerson();
+        cout << "Disease : " << disease << endl;
+        cout << "Assigned Doctor Id : " << assignedDoctorId << endl;
+    }
+};
+
+class Doctor : public Person
+{
+private:
+    string specialization;
+    float consultantFee;
+
+public:
+    Doctor() : Person()
+    {
+        specialization = "";
+        consultantFee = 0;
+    }
+
+    Doctor(int i, string n, int a, string g, string p, string s, float c)
+        : Person(i, n, a, g, p)
+    {
+        specialization = s;
+        consultantFee = c;
+    }
+
+    void setSpecialization(string s)
+    {
+        specialization = s;
+    }
+
+    string getSpecialization()
+    {
+        return specialization;
+    }
+
+    void setConsultantFee(float c)
+    {
+        consultantFee = c;
+    }
+
+    float getConsultantFee()
+    {
+        return consultantFee;
+    }
+
+    void displayDoctor()
+    {
+        displayPerson();
+        cout << "Specialization : " << specialization << endl;
+        cout << "Consultant Fee : " << consultantFee << endl;
+    }
+};
+
+class Appointment
+{
+private:
+    int appointmentId;
+    int patientId;
+    int doctorId;
+    string date;
+    string time;
+
+public:
+    Appointment()
+    {
+        appointmentId = 0;
+        patientId = 0;
+        doctorId = 0;
+        date = "";
+        time = "";
+    }
+
+    Appointment(int aI, int pI, int dI, string d, string t)
+    {
+        appointmentId = aI;
+        patientId = pI;
+        doctorId = dI;
+        date = d;
+        time = t;
+    }
+
+    void setAppointmentId(int aI)
+    {
+        appointmentId = aI;
+    }
+
+    int getAppointmentId()
+    {
+        return appointmentId;
+    }
+
+    void setPatientId(int pI)
+    {
+        patientId = pI;
+    }
+
+    int getPatientId()
+    {
+        return patientId;
+    }
+
+    void setDoctorId(int dI)
+    {
+        doctorId = dI;
+    }
+
+    int getDoctorId()
+    {
+        return doctorId;
+    }
+
+    void setDate(string d)
+    {
+        date = d;
+    }
+
+    string getDate()
+    {
+        return date;
+    }
+
+    void setTime(string t)
+    {
+        time = t;
+    }
+
+    string getTime()
+    {
+        return time;
+    }
+
+    void displayAppointment()
+    {
+        cout << "Appointment Id : " << appointmentId << endl;
+        cout << "Patient Id : " << patientId << endl;
+        cout << "Doctor Id : " << doctorId << endl;
+        cout << "Date : " << date << endl;
+        cout << "Time : " << time << endl;
+    }
+};
+
+class Bill
+{
+private:
+    int billId;
+    int patientId;
+    float doctorFee;
+    float medicineCharges;
+    float testCharges;
+
+public:
+    Bill()
+    {
+        billId = 0;
+        patientId = 0;
+        doctorFee = 0;
+        medicineCharges = 0;
+        testCharges = 0;
+    }
+
+    Bill(int bI, int pI, float dF, float mC, float tC)
+    {
+        billId = bI;
+        patientId = pI;
+        doctorFee = dF;
+        medicineCharges = mC;
+        testCharges = tC;
+    }
+
+    void setBillId(int bI)
+    {
+        billId = bI;
+    }
+
+    int getBillId()
+    {
+        return billId;
+    }
+
+    void setPatientId(int pI)
+    {
+        patientId = pI;
+    }
+
+    int getPatientId()
+    {
+        return patientId;
+    }
+
+    void setDoctorFee(float dF)
+    {
+        doctorFee = dF;
+    }
+
+    float getDoctorFee()
+    {
+        return doctorFee;
+    }
+
+    void setMedicineCharges(float mC)
+    {
+        medicineCharges = mC;
+    }
+
+    float getMedicineCharges()
+    {
+        return medicineCharges;
+    }
+
+    void setTestCharges(float tC)
+    {
+        testCharges = tC;
+    }
+
+    float getTestCharges()
+    {
+        return testCharges;
+    }
+
+    float calculateTotalBill()
+    {
+        return doctorFee + medicineCharges + testCharges;
+    }
+
+    void displayBill()
+    {
+        cout << "Bill Id : " << billId << endl;
+        cout << "Patient Id : " << patientId << endl;
+        cout << "Doctor Fee : " << doctorFee << endl;
+        cout << "Medicine Charges : " << medicineCharges << endl;
+        cout << "Test Charges : " << testCharges << endl;
+        cout << "Total Bill : " << calculateTotalBill() << endl;
+    }
+
+    float operator+(Bill b)
+    {
+        return calculateTotalBill() + b.calculateTotalBill();
+    }
+};
+
+class HospitalSystem
+{
+private:
+    vector<Patient> patients;
+    vector<Doctor> doctors;
+    vector<Appointment> appointments;
+    vector<Bill> bills;
+
+public:
+    void registerPatient()
+    {
+        int id, age;
+        string name, gender, phone, disease;
+
+        cout << "Enter Patient ID: ";
+        cin >> id;
+        if (id <= 0)
+        {
+            cout << "Invalid Patient ID" << endl;
+            return;
+        }
+
+        for (int i = 0; i < patients.size(); i++)
+        {
+            if (patients[i].getId() == id)
+            {
+                cout << "Patient ID already exists" << endl;
+                return;
+            }
+        }
+
+        cout << "Enter Name: ";
+        cin >> name;
+        if (name == "")
+        {
+            cout << "Invalid Name" << endl;
+            return;
+        }
+
+        cout << "Enter Age: ";
+        cin >> age;
+        if (age <= 0)
+        {
+            cout << "Invalid Age" << endl;
+            return;
+        }
+
+        cout << "Enter Gender: ";
+        cin >> gender;
+        if (gender != "Male" && gender != "Female" && gender != "male" && gender != "female")
+        {
+            cout << "Invalid Gender" << endl;
+            return;
+        }
+
+        cout << "Enter Phone: ";
+        cin >> phone;
+        if (phone == "")
+        {
+            cout << "Invalid Phone" << endl;
+            return;
+        }
+
+        cout << "Enter Disease: ";
+        cin >> disease;
+        if (disease == "")
+        {
+            cout << "Invalid Disease" << endl;
+            return;
+        }
+
+        Patient p(id, name, age, gender, phone, disease, 0);
+        patients.push_back(p);
+
+        cout << "Patient Registered Successfully" << endl;
+    }
+
+    void registerPatient(int id, string name, int age, string gender, string phone, string disease)
+    {
+        Patient p(id, name, age, gender, phone, disease, 0);
+        patients.push_back(p);
+    }
+
+    void addDoctor()
+    {
+        int id, age;
+        string name, gender, phone, specialization;
+        float fee;
+
+        cout << "Enter Doctor ID: ";
+        cin >> id;
+        if (id <= 0)
+        {
+            cout << "Invalid Doctor ID" << endl;
+            return;
+        }
+
+        for (int i = 0; i < doctors.size(); i++)
+        {
+            if (doctors[i].getId() == id)
+            {
+                cout << "Doctor ID already exists" << endl;
+                return;
+            }
+        }
+
+        cout << "Enter Name: ";
+        cin >> name;
+        if (name == "")
+        {
+            cout << "Invalid Name" << endl;
+            return;
+        }
+
+        cout << "Enter Age: ";
+        cin >> age;
+        if (age <= 0)
+        {
+            cout << "Invalid Age" << endl;
+            return;
+        }
+
+        cout << "Enter Gender: ";
+        cin >> gender;
+        if (gender != "Male" && gender != "Female" && gender != "male" && gender != "female")
+        {
+            cout << "Invalid Gender" << endl;
+            return;
+        }
+
+        cout << "Enter Phone: ";
+        cin >> phone;
+        if (phone == "")
+        {
+            cout << "Invalid Phone" << endl;
+            return;
+        }
+
+        cout << "Enter Specialization: ";
+        cin >> specialization;
+        if (specialization == "")
+        {
+            cout << "Invalid Specialization" << endl;
+            return;
+        }
+
+        cout << "Enter Consultant Fee: ";
+        cin >> fee;
+        if (fee < 0)
+        {
+            cout << "Invalid Consultant Fee" << endl;
+            return;
+        }
+
+        Doctor d(id, name, age, gender, phone, specialization, fee);
+        doctors.push_back(d);
+
+        cout << "Doctor Added Successfully" << endl;
+    }
+
+    void assignDoctorToPatient()
+    {
+        if (patients.size() == 0)
+        {
+            cout << "No Patients Available" << endl;
+            return;
+        }
+
+        if (doctors.size() == 0)
+        {
+            cout << "No Doctors Available" << endl;
+            return;
+        }
+
+        int pId, dId;
+        bool patientFound = false;
+        bool doctorFound = false;
+
+        cout << "Enter Patient ID: ";
+        cin >> pId;
+        cout << "Enter Doctor ID: ";
+        cin >> dId;
+
+        for (int i = 0; i < doctors.size(); i++)
+        {
+            if (doctors[i].getId() == dId)
+            {
+                doctorFound = true;
+                break;
+            }
+        }
+
+        for (int i = 0; i < patients.size(); i++)
+        {
+            if (patients[i].getId() == pId)
+            {
+                patients[i].setAssignedDoctorId(dId);
+                patientFound = true;
+                break;
+            }
+        }
+
+        if (patientFound && doctorFound)
+        {
+            cout << "Doctor Assigned Successfully" << endl;
+        }
+        else
+        {
+            cout << "Patient or Doctor not found" << endl;
+        }
+    }
+
+    void createAppointment()
+    {
+        if (patients.size() == 0)
+        {
+            cout << "No Patients Available" << endl;
+            return;
+        }
+
+        if (doctors.size() == 0)
+        {
+            cout << "No Doctors Available" << endl;
+            return;
+        }
+
+        int appId, pId, dId;
+        string date, time;
+        bool patientFound = false;
+        bool doctorFound = false;
+
+        cout << "Enter Appointment ID: ";
+        cin >> appId;
+        if (appId <= 0)
+        {
+            cout << "Invalid Appointment ID" << endl;
+            return;
+        }
+
+        for (int i = 0; i < appointments.size(); i++)
+        {
+            if (appointments[i].getAppointmentId() == appId)
+            {
+                cout << "Appointment ID already exists" << endl;
+                return;
+            }
+        }
+
+        cout << "Enter Patient ID: ";
+        cin >> pId;
+        cout << "Enter Doctor ID: ";
+        cin >> dId;
+
+        for (int i = 0; i < patients.size(); i++)
+        {
+            if (patients[i].getId() == pId)
+            {
+                patientFound = true;
+                break;
+            }
+        }
+
+        for (int i = 0; i < doctors.size(); i++)
+        {
+            if (doctors[i].getId() == dId)
+            {
+                doctorFound = true;
+                break;
+            }
+        }
+
+        if (!patientFound || !doctorFound)
+        {
+            cout << "Patient or Doctor not found" << endl;
+            return;
+        }
+
+        cout << "Enter Date: ";
+        cin >> date;
+        if (date == "")
+        {
+            cout << "Invalid Date" << endl;
+            return;
+        }
+
+        cout << "Enter Time: ";
+        cin >> time;
+        if (time == "")
+        {
+            cout << "Invalid Time" << endl;
+            return;
+        }
+
+        Appointment a(appId, pId, dId, date, time);
+        appointments.push_back(a);
+
+        cout << "Appointment Created Successfully" << endl;
+    }
+
+    void generateBill()
+    {
+        if (patients.size() == 0)
+        {
+            cout << "No Patients Available" << endl;
+            return;
+        }
+
+        int billId, pId;
+        float dFee, mCharges, tCharges;
+        bool patientFound = false;
+
+        cout << "Enter Bill ID: ";
+        cin >> billId;
+        if (billId <= 0)
+        {
+            cout << "Invalid Bill ID" << endl;
+            return;
+        }
+
+        for (int i = 0; i < bills.size(); i++)
+        {
+            if (bills[i].getBillId() == billId)
+            {
+                cout << "Bill ID already exists" << endl;
+                return;
+            }
+        }
+
+        cout << "Enter Patient ID: ";
+        cin >> pId;
+
+        for (int i = 0; i < patients.size(); i++)
+        {
+            if (patients[i].getId() == pId)
+            {
+                patientFound = true;
+                break;
+            }
+        }
+
+        if (!patientFound)
+        {
+            cout << "Patient not found" << endl;
+            return;
+        }
+
+        cout << "Enter Doctor Fee: ";
+        cin >> dFee;
+        if (dFee < 0)
+        {
+            cout << "Invalid Doctor Fee" << endl;
+            return;
+        }
+
+        cout << "Enter Medicine Charges: ";
+        cin >> mCharges;
+        if (mCharges < 0)
+        {
+            cout << "Invalid Medicine Charges" << endl;
+            return;
+        }
+
+        cout << "Enter Test Charges: ";
+        cin >> tCharges;
+        if (tCharges < 0)
+        {
+            cout << "Invalid Test Charges" << endl;
+            return;
+        }
+
+        Bill b(billId, pId, dFee, mCharges, tCharges);
+        bills.push_back(b);
+
+        cout << "Bill Generated Successfully" << endl;
+    }
+
+    void displayPatientRecord()
+    {
+        if (patients.size() == 0)
+        {
+            cout << "No Patients Available" << endl;
+            return;
+        }
+
+        int pId;
+        bool found = false;
+
+        cout << "Enter Patient ID: ";
+        cin >> pId;
+
+        for (int i = 0; i < patients.size(); i++)
+        {
+            if (patients[i].getId() == pId)
+            {
+                cout << "\n----- Patient Record -----" << endl;
+                patients[i].displayPatient();
+                found = true;
+
+                cout << "\n----- Appointment Details -----" << endl;
+                bool appointmentFound = false;
+                for (int j = 0; j < appointments.size(); j++)
+                {
+                    if (appointments[j].getPatientId() == pId)
+                    {
+                        appointments[j].displayAppointment();
+                        appointmentFound = true;
+                    }
+                }
+                if (!appointmentFound)
+                {
+                    cout << "No Appointment Found" << endl;
+                }
+
+                cout << "\n----- Bill Details -----" << endl;
+                bool billFound = false;
+                for (int k = 0; k < bills.size(); k++)
+                {
+                    if (bills[k].getPatientId() == pId)
+                    {
+                        bills[k].displayBill();
+                        billFound = true;
+                    }
+                }
+                if (!billFound)
+                {
+                    cout << "No Bill Found" << endl;
+                }
+            }
+        }
+
+        if (!found)
+        {
+            cout << "Patient not found" << endl;
+        }
+    }
+
+    void displayAllDoctors()
+    {
+        if (doctors.size() == 0)
+        {
+            cout << "No Doctors Available" << endl;
+            return;
+        }
+
+        for (int i = 0; i < doctors.size(); i++)
+        {
+            cout << "\n----- Doctor " << i + 1 << " -----" << endl;
+            doctors[i].displayDoctor();
+        }
+    }
+
+    void compareBills()
+    {
+        if (bills.size() < 2)
+        {
+            cout << "At least 2 bills are required" << endl;
+            return;
+        }
+
+        cout << "Combined Total of First Two Bills = " << bills[0] + bills[1] << endl;
+    }
+};
+
+int main()
+{
+    HospitalSystem h;
+    int choice;
+
+    do
+    {
+        cout << "\n===== Smart Healthcare Patient & Billing System =====" << endl;
+        cout << "1. Register Patient" << endl;
+        cout << "2. Add Doctor" << endl;
+        cout << "3. Assign Doctor To Patient" << endl;
+        cout << "4. Create Appointment" << endl;
+        cout << "5. Generate Bill" << endl;
+        cout << "6. Display Patient Record" << endl;
+        cout << "7. Display All Doctors" << endl;
+        cout << "8. Compare First Two Bills" << endl;
+        cout << "9. Exit" << endl;
+        cout << "Enter Choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            h.registerPatient();
+            break;
+        case 2:
+            h.addDoctor();
+            break;
+        case 3:
+            h.assignDoctorToPatient();
+            break;
+        case 4:
+            h.createAppointment();
+            break;
+        case 5:
+            h.generateBill();
+            break;
+        case 6:
+            h.displayPatientRecord();
+            break;
+        case 7:
+            h.displayAllDoctors();
+            break;
+        case 8:
+            h.compareBills();
+            break;
+        case 9:
+            cout << "Exiting Program..." << endl;
+            break;
+        default:
+            cout << "Invalid Choice" << endl;
+        }
+
+    } while (choice != 9);
+
+    return 0;
+}
